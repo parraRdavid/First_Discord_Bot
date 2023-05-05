@@ -19,12 +19,13 @@ const commands = [
 
 const rest = new REST({ version: "10" }).setToken(process.env.Token);
 
+//function that registers our commands
 (async () => {
   try {
     await rest.put(
       Routes.applicationGuildCommands(
-        process.env.CLIENT_ID,
-        process.env.GUILD_ID
+        process.env.CLIENT_ID, //CLIENT_ID is located in a .env file that holds the bot ID
+        process.env.GUILD_ID   //GUILD_ID is located in a .env file that holds the Discord Server ID
       ),
       { body: commands }
     );
